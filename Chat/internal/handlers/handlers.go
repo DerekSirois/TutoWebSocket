@@ -113,6 +113,11 @@ func ListenToWsChannel() {
 			users := getUserList()
 			response.ConnectedUsers = users
 			BroadcastToAll(response)
+
+		case "broadcast":
+			response.Action = "broadcast"
+			response.Message = fmt.Sprintf("<strong>%s</strong>: %s", e.Username, e.Message)
+			BroadcastToAll(response)
 		}
 
 		//response.Action = "Got here"
